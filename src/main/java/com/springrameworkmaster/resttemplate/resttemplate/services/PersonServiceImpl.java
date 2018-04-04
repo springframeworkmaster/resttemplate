@@ -5,10 +5,12 @@ import com.springrameworkmaster.resttemplate.resttemplate.domains.PersonList;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PersonServiceImpl  implements PersonService{
+public class
+PersonServiceImpl  implements PersonService{
 
     RestTemplate restTemplate;
 
@@ -18,9 +20,11 @@ public class PersonServiceImpl  implements PersonService{
 
     @Override
     public List<Person> getAllPersons() {
-        PersonList personList = restTemplate.getForObject("http://localhost:8080/api/persons", PersonList.class);
 
-        System.out.println(personList.toString());
-        return personList.getPersons();
+
+        Person[] people = restTemplate.getForObject("http://localhost:8080/api/persons", Person[].class);
+
+        List<Person> personList = Arrays.asList(people);
+        return personList;
     }
 }
