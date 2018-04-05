@@ -22,7 +22,7 @@ PersonServiceImpl  implements PersonService{
     public List<Person> getAllPersons() {
 
 
-        Person[] people = restTemplate.getForObject("http://localhost:8080/api/persons", Person[].class);
+        Person[] people = restTemplate.getForObject("http://localhost:5555/api/persons", Person[].class);
 
         List<Person> personList = Arrays.asList(people);
         return personList;
